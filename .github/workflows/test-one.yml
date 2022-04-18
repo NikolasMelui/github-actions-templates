@@ -5,7 +5,7 @@ env:
 on: workflow_dispatch
 
 jobs:
-  deploy:
+  prepare_and_run:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -15,16 +15,12 @@ jobs:
           node-version: '16'
           check-latest: true
       - name: Install package
-        run: npm i axios
+        run: npm ci
       - name: Prepare env vars
         run: |
           echo ${{ secrets.FIRST_ADDRESS }} >> ${{ env.ADDRESSES_FILE }}
           echo ${{ secrets.SECOND_ADDRESS }} >> ${{ env.ADDRESSES_FILE }}
-          cat ${{ env.ADDRESSES_FILE }}
         env:
           ADDRESSES_FILE: addresses.txt
-      - name: Prepare script
-        run: echo "${{ secrets.SCRIPT }}" > ${{ env.SCRIPT_FILE }}
       - name: Run script
-        run: |
-          node ${{ env.SCRIPT_FILE }}
+        run: node ${{ env.SCRIPT_FILE }}
