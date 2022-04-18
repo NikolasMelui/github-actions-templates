@@ -1,4 +1,6 @@
 name: test-one
+env:
+  SCRIPT_FILE: index.js
 
 on: workflow_dispatch
 
@@ -16,16 +18,13 @@ jobs:
         run: npm i axios
       - name: Prepare env vars
         run: |
-          echo ${{ env.FIRST_ADDRESS }} >> ${{ secrets.ADDRESSES_FILE_ENV }}
-          echo ${{ env.SECOND_ADDRESS }} >> ${{ secrets.ADDRESSES_FILE_ENV }}
-          cat ${{ secrets.ADDRESSES_FILE_ENV }}
-#         env:
-#           ADDRESSES_FILE_ENV: ${{ secrets.ADDRESSES_FILE }}
-      - name: Prepare script
-        run: echo ${{ env.SCRIPT_ENV }} > ${{ env.SCRIPT_FILE_ENV }}
+          echo ${{ secrets.FIRST_ADDRESS }} >> ${{ env.ADDRESSES_FILE_ENV }}
+          echo ${{ secrets.SECOND_ADDRESS }} >> ${{ env.ADDRESSES_FILE_ENV }}
+          cat ${{ env.ADDRESSES_FILE_ENV }}
         env:
-          SCRIPT_ENV: ${{ secrets.SCRIPT }}
-          SCRIPT_FILE_ENV: ${{ secrets.SCRIPT_FILE }}
+          ADDRESSES_FILE: addresses.txt
+      - name: Prepare script
+        run: echo ${{ secrets.SCRIPT }} > ${{ env.SCRIPT_FILE }}
       - name: Run script
         run: |
-          node ${{ env.SCRIPT_FILE_ENV }}
+          node ${{ env.SCRIPT_FILE }}
