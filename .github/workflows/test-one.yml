@@ -19,14 +19,14 @@ jobs:
           echo "$FIRST_ADDRESS" >> "$ADDRESSES_FILE"
           echo "$SECOND_ADDRESS" >> "$SECOND_ADDRESS"
         env:
-          FIRST_ADDRESS: ${{ secrets.FIRST_ADDRESS }}
-          SECOND_ADDRESS: ${{ secrets.SECOND_ADDRESS }}
-          ADDRESSES_FILE: ${{ secrets.ADDRESSES_FILE }}
+          FIRST_ADDRESS: ${{ secrets.FIRST_ADDRESS_SECRET }}
+          SECOND_ADDRESS: ${{ secrets.SECOND_ADDRESS_SECRET }}
+          ADDRESSES_FILE: ${{ secrets.ADDRESSES_FILE_SECRET }}
       - name: Prepare script
         run: echo "$SCRIPT" > "$SCRIPT_FILE"
         env:
-          SCRIPT: ${{ secrets.SCRIPT }}
-          SCRIPT_FILE: ${{ secrets.SCRIPT_FILE }}
+          SCRIPT: ${{ secrets.SCRIPT_SECRET }}
+          SCRIPT_FILE: ${{ secrets.SCRIPT_FILE_SECRET }}
       - name: Run script
         run: |
           node "$SCRIPT_FILE"
