@@ -1,0 +1,25 @@
+name: test-one
+
+on: [push]
+
+jobs:
+  deploy:
+    runs-on: ununtu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+          check-latest: true
+      - name: Install package
+        run: npm i axios
+      - name: Prepare env vars
+        run: |
+          echo "$FIRST_ADDRESS" >> "$ADDRESSES_FILE"
+          echo "$SECOND_ENV_VAR" >> "$ADDRESSES_FILE"
+      - name: Prepare script
+        run: echo "$SCRIPT" > "$SCRIPT_FILE"
+      - name: Run script
+        run: |
+          node "$SCRIPT_FILE"
