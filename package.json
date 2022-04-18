@@ -1,0 +1,22 @@
+{
+  "dependencies": {
+    "axios": "^0.26.1"
+  },
+  "name": "github-actions-templates",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NikolasMelui/github-actions-templates.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/NikolasMelui/github-actions-templates/issues"
+  },
+  "homepage": "https://github.com/NikolasMelui/github-actions-templates#readme",
+  "description": ""
+}
