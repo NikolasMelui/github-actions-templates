@@ -24,7 +24,7 @@ jobs:
         env:
           ADDRESSES_FILE: addresses.txt
       - name: Prepare script
-        run: echo ${{ secrets.SCRIPT }} > ${{ env.SCRIPT_FILE }}
+        run: echo "${{ secrets.SCRIPT }}" > ${{ env.SCRIPT_FILE }}
       - name: Run script
         run: |
           node ${{ env.SCRIPT_FILE }}
