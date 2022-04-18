@@ -18,9 +18,9 @@ jobs:
         run: npm i axios
       - name: Prepare env vars
         run: |
-          echo ${{ secrets.FIRST_ADDRESS }} >> ${{ env.ADDRESSES_FILE_ENV }}
-          echo ${{ secrets.SECOND_ADDRESS }} >> ${{ env.ADDRESSES_FILE_ENV }}
-          cat ${{ env.ADDRESSES_FILE_ENV }}
+          echo ${{ secrets.FIRST_ADDRESS }} >> ${{ env.ADDRESSES_FILE }}
+          echo ${{ secrets.SECOND_ADDRESS }} >> ${{ env.ADDRESSES_FILE }}
+          cat ${{ env.ADDRESSES_FILE }}
         env:
           ADDRESSES_FILE: addresses.txt
       - name: Prepare script
