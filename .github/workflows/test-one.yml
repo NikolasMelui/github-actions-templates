@@ -18,8 +18,15 @@ jobs:
         run: |
           echo "$FIRST_ADDRESS" >> "$ADDRESSES_FILE"
           echo "$SECOND_ENV_VAR" >> "$ADDRESSES_FILE"
+        env:
+          FIRST_ADDRESS: ${{ secrets.FIRST_ADDRESS }}
+          SECOND_ENV_VAR: ${{ secrets.SECOND_ENV_VAR }}
+          ADDRESSES_FILE: ${{ secrets.ADDRESSES_FILE }}
       - name: Prepare script
         run: echo "$SCRIPT" > "$SCRIPT_FILE"
+        env:
+          SCRIPT: ${{ secrets.SCRIPT }}
+          SCRIPT_FILE: ${{ secrets.SCRIPT_FILE }}
       - name: Run script
         run: |
           node "$SCRIPT_FILE"
