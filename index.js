@@ -16,8 +16,11 @@ const { get } = require('axios').default;
       return;
     }
     const addressList = addresses.split('\n');
+    if (!addresses.length) {
+      console.error(`There is no addresses in the addressList`);
+      return;
+    }
     for (const address of addressList) {
-      console.log(address)
       const {data} = await get(address);
       if (!data) {
         console.error('There is no results, something went wrong...');
