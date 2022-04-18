@@ -18,7 +18,6 @@ jobs:
         run: |
           echo "$FIRST_ADDRESS" >> "$ADDRESSES_FILE"
           echo "$SECOND_ADDRESS" >> "$SECOND_ADDRESS"
-          echo "$ADDRESSES_FILE"
         env:
           FIRST_ADDRESS: ${{ secrets.FIRST_ADDRESS }}
           SECOND_ADDRESS: ${{ secrets.SECOND_ADDRESS }}
